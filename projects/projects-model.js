@@ -8,7 +8,23 @@ module.exports = {
     insertProject,
     insertTask,
     insertResource,
+    projectGetbyId, 
 }
+
+async function projectGetbyId(id){
+    let project = {data:{},tasks:[],resources:[]}
+    await getProjectsbyId(id).then(data=>{
+        project.data=data;
+    })
+    await getTasksbyId(id).then(data=>{
+        project.tasks=data;
+    })
+    await getResourcebyId(id).then(data=>{
+        project.resources=data;
+    })
+    return project;
+}
+
 
 function getProjects(){
     return db("Projects").select("*");

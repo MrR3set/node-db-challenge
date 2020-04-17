@@ -13,7 +13,7 @@ router.get("/",(req,res)=>{
         })
 })
 router.get("/:id/project",(req,res)=>{
-        projects.getProjectsbyId(req.params.id).then(data=>{
+        projects.projectGetbyId(req.params.id).then(data=>{
                 res.status(200).json(data);
         }).catch(err=>{
                 console.log(err);
